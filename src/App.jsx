@@ -202,6 +202,11 @@ export default function App() {
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
       />
+      <div
+        className={"sidebar-scrim " + (menuOpen ? "open" : "")}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
       <main className="main">
         <div className="main-inner">{screen}</div>
       </main>

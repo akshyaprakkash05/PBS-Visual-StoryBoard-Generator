@@ -14,11 +14,13 @@ async function loadDeps() {
 }
 
 function safeFilename(base) {
-  return String(base || "storyboard")
+  const stem = String(base || "storyboard")
+    .replace(/\.pdf$/i, "")
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 80) || "storyboard";
+  return stem + ".pdf";
 }
 
 export async function exportSheetsToPdf({ container, filename = "pbs-storyboard.pdf" } = {}) {
@@ -30,7 +32,6 @@ export async function exportSheetsToPdf({ container, filename = "pbs-storyboard.
   const { jsPDF, html2canvas } = await loadDeps();
   const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
 
-  // Temporarily reset any responsive transforms applied by mobile styles.
   const previousTransforms = sheets.map((el) => el.style.transform);
   sheets.forEach((el) => { el.style.transform = "none"; });
 
@@ -49,7 +50,7 @@ export async function exportSheetsToPdf({ container, filename = "pbs-storyboard.
       if (i > 0) pdf.addPage("a4", "portrait");
       pdf.addImage(img, "JPEG", 0, 0, A4_MM.w, A4_MM.h, undefined, "FAST");
     }
-    pdf.save(safeFilename(filename) + (filename.endsWith(".pdf") ? "" : ".pdf"));
+    pdf.save(safeFilename(filename));
   } finally {
     sheets.forEach((el, i) => { el.style.transform = previousTransforms[i]; });
   }
@@ -60,7 +61,7 @@ export function downloadStoryboardJson(payload, baseName = "storyboard") {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = safeFilename(baseName) + ".json";
+  a.download = safeFilename(baseName).replace(/\.pdf$/, ".json");
   document.body.appendChild(a);
   a.click();
   a.remove();
