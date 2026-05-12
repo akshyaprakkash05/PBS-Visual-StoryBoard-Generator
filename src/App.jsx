@@ -202,7 +202,9 @@ export default function App() {
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
       />
-      <main className="main">{screen}</main>
+      <main className="main">
+        <div className="main-inner">{screen}</div>
+      </main>
       <Toast toast={toast} />
     </div>
   );

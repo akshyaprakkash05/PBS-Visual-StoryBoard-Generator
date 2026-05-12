@@ -111,8 +111,8 @@ export default function ExportScreen({
 
       <SafeguardLine />
 
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 360px", gap: 24 }}>
-        <div className="card card-lg">
+      <div className="col-2">
+        <div className="card card-lg" style={{ minWidth: 0 }}>
           <h2 style={{ marginBottom: 6 }}>Format</h2>
           <p className="card-sub" style={{ marginBottom: 16 }}>Pick a layout that suits how it'll be used.</p>
 

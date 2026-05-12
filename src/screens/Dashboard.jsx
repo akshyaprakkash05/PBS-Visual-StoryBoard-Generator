@@ -43,8 +43,8 @@ export default function Dashboard({ setRoute, recent, startNew, onMenu, topActio
         </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 2fr) minmax(0, 1fr)", gap: 20 }}>
-        <div className="card card-lg">
+      <div className="col-2-dashboard">
+        <div className="card card-lg" style={{ minWidth: 0 }}>
           <div className="card-head">
             <div>
               <h2>Start a new storyboard</h2>
@@ -147,7 +147,7 @@ export default function Dashboard({ setRoute, recent, startNew, onMenu, topActio
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, minWidth: 0 }}>
           <div className="card">
             <div className="card-head">
               <h3>Tip of the day</h3>

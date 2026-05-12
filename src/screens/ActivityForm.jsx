@@ -45,8 +45,8 @@ export default function ActivityForm({ data, setData, person, onNext, onBack, on
         sub="Pick a starting point or describe your own. You can fine-tune length, tone, and what to show in each step."
       />
 
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 320px", gap: 24 }}>
-        <div className="card card-lg">
+      <div className="col-2">
+        <div className="card card-lg" style={{ minWidth: 0 }}>
           <h2 style={{ marginBottom: 6 }}>The activity</h2>
           <p className="card-sub" style={{ marginBottom: 18 }}>Choose a preset to start, then refine the details.</p>
 

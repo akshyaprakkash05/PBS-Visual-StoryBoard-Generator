@@ -4,13 +4,13 @@ import { I } from "./Icons.jsx";
 export default function Topbar({ crumbs = [], actions, onMenu }) {
   return (
     <div className="topbar" data-no-print>
-      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, flex: "1 1 auto" }}>
         {onMenu && (
           <button className="menu-btn" onClick={onMenu} aria-label="Open menu">
             <I.Menu size={18} />
           </button>
         )}
-        <nav className="crumbs" aria-label="Breadcrumb">
+        <nav className="crumbs" aria-label="Breadcrumb" style={{ minWidth: 0 }}>
           {crumbs.map((c, i) => (
             <React.Fragment key={i}>
               {i > 0 && <span className="sep">›</span>}

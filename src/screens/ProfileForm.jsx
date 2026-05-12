@@ -38,8 +38,8 @@ export default function ProfileForm({ data, setData, onNext, onBack, onMenu }) {
         sub="Tell us a little about the person. This shapes the language, images, and pacing of the steps. Everything is saved to their care record."
       />
 
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 320px", gap: 24 }}>
-        <div className="card card-lg">
+      <div className="col-2">
+        <div className="card card-lg" style={{ minWidth: 0 }}>
           <h2 style={{ marginBottom: 6 }}>About the person</h2>
           <p className="card-sub" style={{ marginBottom: 22 }}>
             Required fields are marked with an asterisk.
